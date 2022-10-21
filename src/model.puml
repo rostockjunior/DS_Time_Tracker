@@ -1,0 +1,56 @@
+@startuml
+class Tarea{
++ father_proyecto
++ Intervalos[]
++ Suma de Intervals()
++ Finalitza Tarea()
++ set Interval ()
++ get father_Proyecto()
+}
+class Proyecto{
++ Nombre Proyecto
++ get info Tarea()
++ Tiempo Proyecto
++ Get suma Tarea()
++ set Tarea()
+}
+class Interval{
++ fecha inicial
++ fecha final
++ duracion
++ Calcular Temps Total()
++ get_Fecha()
+}
+abstract Nodo{
+- pare
++ Fecha Inicial
++ Fecha Final
++ get pare()
+}
+
+class Cronometro{
++ Inici
++ Finalizar
++ Temps()
+}
+
+package Observer/Observable <<Folder>> {
+interface Observer{
+
+}
+abstract Observable{
+
+}
+}
+
+
+Proyecto *-- "1..*" Nodo
+Proyecto  -up-|> Nodo
+Tarea -up-|> Nodo
+Cronometro --|> Observable
+Interval *-- "1..*" Tarea
+Interval ..|> Observer
+
+
+
+@enduml
