@@ -12,9 +12,16 @@ class Cronometro extends Observable {
     }
 
 
+    public Cronometro(boolean Inici){
+        int hora = 0;
+        int minutos = 0;
+        int segundos = 0;
+        while
 
+    }
 
     boolean Inici;
+    boolean Parar;
     boolean Finalizar;
     int sec;
     int min;
