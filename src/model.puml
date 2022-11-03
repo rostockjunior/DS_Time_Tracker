@@ -1,54 +1,50 @@
 @startuml
-class Tarea{
-+ father_proyecto
-+ Intervalos[]
-+ Suma de Intervals()
-+ Finalitza Tarea()
-+ set Interval ()
-+ get father_Proyecto()
+class Task{
+- fatherProject
+- intervals[]
++ sumIntervals()
++ finishTask()
++ setInterval()
++ getFatherProject()
 }
-class Proyecto{
-+ Nombre Proyecto
-+ get info Tarea()
-+ Tiempo Proyecto
-+ Get suma Tarea()
-+ set Tarea()
+class Project{
+- nameProject
++ getInfoTask()
++ timeProject
++ getSumaTask()
++ setTask()
 }
 class Interval{
-+ fecha inicial
-+ fecha final
-+ duracion
-+ Calcular Temps Total()
-+ get_Fecha()
+- dateStart
+- dateFinal
+- duration
++ calculateTotalTime()
++ getDate()
++ update()
++ timeBetweenUpdates()
 }
-abstract Nodo{
-- pare
-+ Fecha Inicial
-+ Fecha Final
-+ get pare()
+abstract Activity{
+- dateStart
+- dateFinal
++ getFather()
 }
 
-class Cronometro{
-+ Inici
-+ Finalizar
-+ Temps()
+class Clock{
 }
 
 package Observer/Observable <<Folder>> {
 interface Observer{
-
 }
 abstract Observable{
-
 }
 }
 
 
-Proyecto *-- "1..*" Nodo
-Proyecto  -up-|> Nodo
-Tarea -up-|> Nodo
-Cronometro --|> Observable
-Interval *-- "1..*" Tarea
+Project *-- "1..*" Activity
+Project  -up-|> Activity
+Task -up-|> Activity
+Clock --|> Observable
+Task *-- "0..*" Interval
 Interval ..|> Observer
 
 
